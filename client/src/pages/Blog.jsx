@@ -4,6 +4,7 @@ import { blog_data, assets, comments_data } from '../assets/assets'
 import Navbar from '../components/Navbar'
 import Moment from 'moment'
 import Footer from '../components/Footer'
+import Loader from '../components/Loader'
 
 const Blog = () => {
   const { id } = useParams()
@@ -169,9 +170,7 @@ const Blog = () => {
       </div>
       <Footer/>
     </div>
-  ) : (
-    <div className="flex items-center justify-center min-h-screen">Loading....</div>
-  )
+  ) : <Loader/>
 }
 
 export default Blog
