@@ -42,7 +42,7 @@ const BlogTableItem = ({ blog, fetchBlogs, index }) => {
         />
       </td>
     </tr>
-  );
+  ); 
 };
 
 export default BlogTableItem;
