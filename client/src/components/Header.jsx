@@ -34,7 +34,7 @@ const Header = () => {
       <img 
         src={assets.gradientBackground} 
         alt="gradient background"  
-        className="absolute -top-20 left-0 w-full max-w-4xl mx-auto opacity-60 -z-10" 
+        className="absolute top-0 left-0 w-full min-h-screen object-cover z-0 opacity-60 pointer-events-none" 
       />
     </div>
   )
