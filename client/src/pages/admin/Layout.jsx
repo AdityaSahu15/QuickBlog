@@ -12,30 +12,34 @@ const Layout = () => {
 
   return (
     <>
-    
-    <div className="flex items-center justify-between px-6 py-3 shadow-xs ">
-      {/* Logo on the left */}
-      <img
-        src={assets.logo}
-        alt="Logo"
-        className="h-8 ml-10 cursor-pointer"   // smaller image (h-8) + margin from left (ml-4)
-        onClick={() => navigate('/')}
-      />
+      {/* Top Navbar */}
+      <div className="flex items-center justify-between px-6 py-3 shadow-md">
+        {/* Logo */}
+        <img
+          src={assets.logo}
+          alt="Logo"
+          className="h-8 ml-10 cursor-pointer"
+          onClick={() => navigate('/')}
+        />
 
-      {/* Logout button on the right */}
-      <button
-        className="bg-blue-500 text-white px-3 py-1.5 rounded-lg mr-10 hover:bg-blue-600 transition"
-        onClick={logout}
-      >
-        Logout
-      </button>
-    </div>
+        {/* Logout button */}
+        <button
+          className="bg-blue-500 text-white px-3 py-1.5 rounded-lg mr-10 hover:bg-blue-600 transition"
+          onClick={logout}
+        >
+          Logout
+        </button>
+      </div>
 
-    <div>
-        <SideBar/>
-        <Outlet/>
-    </div>
-    
+      <div className="flex">
+        {/* Sidebar on the left */}
+        <SideBar />
+
+        {/* Dashboard Content on the right */}
+        <div className="flex-1 p-6">
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };
