@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 
 const SideBar = () => {
   return (
-    <div className="w-48 h-screen  shadow-md p-4 gap-y-5 flex flex-col">
+    <div className="w-48 min-h-screen  shadow-md p-4 gap-y-5 flex flex-col">
       <NavLink
         end={true}
         to="/admin"
