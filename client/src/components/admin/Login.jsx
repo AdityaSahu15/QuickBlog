@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 const Login = () => {
 
-  const {axios,setToken}=useAppContext();
+  const {axios,setToken,navigate}=useAppContext();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,9 +17,11 @@ const Login = () => {
       const {data} =await axios.post('/api/admin/login',{email,password})
       if(data.success)
       {
-        setToken(data.setToken)
+        toast.success(data.message)
+        setToken(data.token)
         localStorage.setItem('token',data.token)
         axios.defaults.headers.common['Authorization']=data.token;
+        navigate('/admin')
       }
       else
       {

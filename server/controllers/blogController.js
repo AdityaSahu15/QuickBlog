@@ -2,6 +2,7 @@ import fs, { rmSync } from "fs";
 import imagekit from "../configs/imageKit.js";
 import Blog from "../models/blog.js";
 import Comment from "../models/comment.js";
+import main from "../configs/gemini.js";
 
 export const addBlog = async (req, res) => {
   try {
@@ -136,3 +137,23 @@ export const getBlogComments=async(req,res)=>{
      res.json({success:false,message:error.message})
   }
 }
+
+// controllers/blogController.js (or wherever your controller lives)
+import generateBlogContent from "../configs/gemini.js";
+
+export const generateContent = async (req, res) => {
+  try {
+    const { prompt } = req.body;
+    if (!prompt) {
+      return res.json({ success: false, message: "Prompt is required" });
+    }
+
+    const content = await generateBlogContent(prompt);
+    return res.json({ success: true, content });
+  } catch (error) {
+    console.error("Gemini API Error:", error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Failed to generate content" });
+  }
+};

@@ -3,11 +3,13 @@ import { assets, blogCategories } from "../../assets/assets";
 import Quill from "quill";
 import { useAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
+import {parse} from "marked"
 
 const AddBlog = () => {
 
   const {axios}=useAppContext();
   const[isAdding,setIsAdding]=useState(false);
+  const[loading,setLoading]=useState(false);
 
   const editorRef = useRef(null);
   const quillRef = useRef(null);
@@ -52,7 +54,24 @@ const AddBlog = () => {
   };
 
   const generateContent = async () => {
-    // AI content logic
+    if(!title) return toast.error('Please enter a title')
+
+      try {
+        setLoading(true);
+        const {data}=await axios.post(`/api/blog/generate`,{prompt:title})
+        if(data.success)
+        {
+          quillRef.current.root.innerHTML=parse(data.content)
+        }
+        else
+        {
+          toast.error(data.message)
+        }
+      } catch (error) {
+        toast.error(error.message)
+      }finally{
+        setLoading(false)
+      }
   };
 
   useEffect(() => {
@@ -120,13 +139,14 @@ const AddBlog = () => {
         <div className=" rounded-lg p-2">
           <div ref={editorRef} className="min-h-80 border border-gray-300" />
         </div>
-        <button
+        <button 
+        disabled={loading}
           type="button"
           className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer 
                      hover:scale-105 transform transition-all duration-200 text-sm"
           onClick={generateContent}
         >
-          Generate with AI
+          {loading?"Generating..." : "Generate with AI"}
         </button>
       </div>
 
