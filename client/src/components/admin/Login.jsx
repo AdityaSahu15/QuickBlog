@@ -25,7 +25,7 @@ const Login = () => {
       }
       else
       {
-        toast.error(data.error)
+        toast.error(data.message)
       }
     } catch (error) {
       toast.error(error.message)
@@ -39,7 +39,7 @@ const Login = () => {
         {/* Heading */}
         <div className="text-center mb-6">
           <h1 className="font-bold text-3xl text-gray-800">
-            Admin <span className="text-blue-600">Login</span>
+            Admin <span className="text-indigo-600">Login</span>
           </h1>
           <p className="text-gray-500 text-sm mt-2">
             Enter your credentials to access the admin panel
@@ -78,7 +78,7 @@ const Login = () => {
           {/* Button */}
           <button 
             type="submit" 
-            className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-200 cursor-pointer hover:scale-105"
+            className="w-full bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition-all duration-200 cursor-pointer hover:scale-105"
           >
             Login
           </button>

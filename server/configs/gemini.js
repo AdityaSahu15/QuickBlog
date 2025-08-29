@@ -15,7 +15,7 @@ export default async function generateBlogContent(prompt) {
   const result = await model.generateContent(
     `You are a helpful blog writer. Write clear, markdown-formatted content (no code fences).
 Topic: ${prompt}
-Length: ~600–900 words. Use headings, short paragraphs, and bullet points where useful.`
+Length: ~1000-1500words. Use headings, short paragraphs, and bullet points where useful. lay special emphasis on making it look clean by segregating points , making proper bold heading `
   );
 
   return result.response.text(); // clean markdown text

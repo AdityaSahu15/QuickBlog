@@ -26,7 +26,7 @@ const Header = () => {
           Your Own Blogging Platform
         </h1>
         <p className="mt-6 text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
-          QuickBlog is your <span className="font-semibold text-blue-600">AI-powered blogging companion</span> that helps you create, edit, and publish blogs effortlessly. Whether you’re a student, professional, or business owner, QuickBlog makes writing fast, creative, and stress-free.
+          QuickBlog is your <span className="font-semibold text-indigo-700">AI-powered blogging companion</span> that helps you create, edit, and publish blogs effortlessly. Whether you’re a student, professional, or business owner, QuickBlog makes writing fast, creative, and stress-free.
         </p>
 
         {/* Search Bar */}
@@ -39,7 +39,7 @@ const Header = () => {
           />
           <button onClick={onSubmitHandler}
             type="submit"
-            className="px-6 py-3 bg-blue-600 text-white font-medium text-sm sm:text-base hover:bg-blue-700 transition duration-200 cursor-pointer"
+            className="px-6 py-3 bg-indigo-600 text-white font-medium text-sm sm:text-base hover:bg-indigo-700 transition duration-200 cursor-pointer"
           >
             Search
           </button>

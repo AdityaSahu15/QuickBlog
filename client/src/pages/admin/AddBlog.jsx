@@ -136,17 +136,22 @@ const AddBlog = () => {
       {/* Blog Description */}
       <div>
         <p className="text-lg font-medium mb-2">Blog Description</p>
-        <div className=" rounded-lg p-2">
+        <div className="rounded-lg p-2 relative">
           <div ref={editorRef} className="min-h-80 border border-gray-300" />
+          {loading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 backdrop-blur-sm rounded-lg">
+              <span className="text-gray-600 text-lg font-medium">Generating Blog...</span>
+            </div>
+          )}
         </div>
         <button 
-        disabled={loading}
+          disabled={loading}
           type="button"
-          className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer 
+          className="mt-2 bg-indigo-600 text-white px-4 py-2 rounded-md cursor-pointer 
                      hover:scale-105 transform transition-all duration-200 text-sm"
           onClick={generateContent}
         >
-          {loading?"Generating..." : "Generate with AI"}
+          {loading ? "Generating..." : "Generate with AI"}
         </button>
       </div>
 
@@ -173,16 +178,16 @@ const AddBlog = () => {
           type="checkbox"
           checked={isPublished}
           onChange={(e) => setIsPublished(e.target.checked)}
-          className="w-5 h-5 accent-blue-500 cursor-pointer"
+          className="w-5 h-5 accent-indigo-500 cursor-pointer"
         />
         <p className="text-lg font-medium">Publish Now</p>
       </div>
 
       {/* Submit */}
       <div className="flex justify-end">
-        <button disabled={isAdding}
+        <button disabled={isAdding || loading}
           type="submit"
-          className="bg-blue-500 text-white px-6 py-3 rounded-md text-md font-medium 
+          className="bg-indigo-600 text-white px-6 py-3 rounded-md text-md font-medium 
                      cursor-pointer hover:scale-105 transform transition-all duration-200"
         >
           {isAdding?'Adding...':'Add Blog'}

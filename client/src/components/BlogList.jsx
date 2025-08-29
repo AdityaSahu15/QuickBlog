@@ -42,7 +42,7 @@ const BlogList = () => {
               {menu === item && (
                 <motion.span
                   layoutId="activeCategory"
-                  className="absolute inset-0 rounded-full bg-blue-600 shadow-md -z-10"
+                  className="absolute inset-0 rounded-full bg-indigo-600 shadow-md -z-10"
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
               )}

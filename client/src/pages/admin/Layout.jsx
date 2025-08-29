@@ -30,7 +30,7 @@ const Layout = () => {
 
         {/* Logout button */}
         <button
-          className="bg-blue-500 text-white px-3 py-1.5 rounded-lg mr-10 hover:bg-blue-600 transition"
+          className="bg-indigo-600 text-white px-3 py-1.5 rounded-lg mr-10 hover:bg-indigo-700 transition cursor-pointer"
           onClick={logout}
         >
           Logout

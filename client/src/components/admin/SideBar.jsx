@@ -10,7 +10,7 @@ const SideBar = () => {
         to="/admin"
         className={({ isActive }) =>
           `flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer 
-          ${isActive ? "bg-blue-100 text-blue-600 font-semibold" : "text-gray-700 hover:bg-gray-100"}`
+          ${isActive ? "bg-blue-100 text-indigo-600 font-semibold" : "text-gray-700 hover:bg-gray-100"}`
         }
       >
         <img src={assets.home_icon} alt="Dashboard" className="w-6 h-6" />
@@ -22,7 +22,7 @@ const SideBar = () => {
         to="/admin/addBlog"
         className={({ isActive }) =>
           `flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer 
-          ${isActive ? "bg-blue-100 text-blue-600 font-semibold" : "text-gray-700 hover:bg-gray-100"}`
+          ${isActive ? "bg-blue-100 text-indigo-600 font-semibold" : "text-gray-700 hover:bg-gray-100"}`
         }
       >
         <img src={assets.add_icon} alt="Dashboard" className="w-6 h-6" />
@@ -34,7 +34,7 @@ const SideBar = () => {
         to="/admin/listBlog"
         className={({ isActive }) =>
           `flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer 
-          ${isActive ? "bg-blue-100 text-blue-600 font-semibold" : "text-gray-700 hover:bg-gray-100"}`
+          ${isActive ? "bg-blue-100 text-indigo-600 font-semibold" : "text-gray-700 hover:bg-gray-100"}`
         }
       >
         <img src={assets.list_icon} alt="Dashboard" className="w-6 h-6" />
@@ -46,7 +46,7 @@ const SideBar = () => {
         to="/admin/comments"
         className={({ isActive }) =>
           `flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer 
-          ${isActive ? "bg-blue-100 text-blue-600 font-semibold" : "text-gray-700 hover:bg-gray-100"}`
+          ${isActive ? "bg-blue-100 text-indigo-600 font-semibold" : "text-gray-700 hover:bg-gray-100"}`
         }
       >
         <img src={assets.comment_icon} alt="Dashboard" className="w-6 h-6" />
