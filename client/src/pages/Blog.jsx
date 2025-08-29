@@ -5,26 +5,63 @@ import Navbar from '../components/Navbar'
 import Moment from 'moment'
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
+import { useAppContext } from '../context/AppContext'
+import toast from 'react-hot-toast'
 
 const Blog = () => {
   const { id } = useParams()
+
+  const { axios } = useAppContext()
+
+
+
   const [data, setData] = useState(null)
   const [comments, setComments] = useState([])
-
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
 
   const fetchBlogData = async () => {
-    const blog = blog_data.find(item => item._id === id)
-    setData(blog)
+    try {
+        const {data}=await axios.get(`/api/blog/${id}`)
+        console.log(data)
+        data.success ? setData(data.blog) : toast.error(data.message)
+    } catch (error) {
+        toast.error(error.message)
+    }
   }
 
   const fetchComments = async () => {
-    setComments(comments_data)
+    try {
+      const {data} = await axios.post('/api/blog/comments',{blogId:id})
+      console.log(data)
+      if(data.success)
+      {
+        setComments(data.comments)
+      }
+      else{
+        toast.error(error.message);
+      }
+    } catch (error) {
+        toast.error(error.message);
+    }
   }
 
   const addComment = async (e) => {
     e.preventDefault();
+    try {
+      const {data} = await axios.post('/api/blog/add-comment',{blog:id,name,content})
+      if(data.success)
+      {
+        toast.success(data.message)
+        setName('')
+        setContent('')
+      }
+      else{
+        toast.error(data.message);
+      }
+    } catch (error) {
+      
+    }
   }
 
   useEffect(() => {
@@ -154,23 +191,23 @@ const Blog = () => {
           </form>
         </div>
 
-              {/*Social media icons */}
-              
-              <div className="text-center mt-6">
-  <p className="mb-3 text-lg font-medium text-gray-700">
-    Share this on social media
-  </p>
-  <div className="flex justify-center gap-6">
-    <img src={assets.facebook_icon} alt="Facebook" />
-    <img src={assets.twitter_icon} alt="Twitter" />
-    <img src={assets.googleplus_icon} alt="Google Plus" />
-  </div>
-</div>
+        {/*Social media icons */}
+
+        <div className="text-center mt-6">
+          <p className="mb-3 text-lg font-medium text-gray-700">
+            Share this on social media
+          </p>
+          <div className="flex justify-center gap-6">
+            <img src={assets.facebook_icon} alt="Facebook" />
+            <img src={assets.twitter_icon} alt="Twitter" />
+            <img src={assets.googleplus_icon} alt="Google Plus" />
+          </div>
+        </div>
 
       </div>
-      <Footer/>
+      <Footer />
     </div>
-  ) : <Loader/>
+  ) : <Loader />
 }
 
 export default Blog

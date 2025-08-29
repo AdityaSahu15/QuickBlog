@@ -90,7 +90,7 @@ export const deleteBlogById=async(req,res)=>{
 
         // delete all the associated comments
 
-        Comment.deleteMany({blog:id});
+        await Comment.deleteMany({blog:id});
 
         res.json({success:true,message:"Blog deleted successfully"})
     } catch (error) {

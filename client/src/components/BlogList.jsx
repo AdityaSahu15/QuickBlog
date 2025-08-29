@@ -2,9 +2,25 @@ import React, { useState } from 'react'
 import { blog_data, blogCategories } from '../assets/assets'
 import { motion, AnimatePresence } from 'framer-motion'
 import BlogCard from './BlogCard'
+import { useAppContext } from '../context/AppContext'
 
 const BlogList = () => {
   const [menu, setMenu] = useState('All')
+  const {blogs,input}=useAppContext()
+
+  const filteredBlogs=()=>{
+    if(input === '')
+    {
+      console.log(blogs)
+      return blogs
+    }
+    console.log(blogs);
+    return blogs.filter((blog)=>blog.title.toLowerCase().includes(input.toLowerCase()) || blog.category.toLowerCase().includes(input.toLowerCase()))
+   
+
+
+
+  }
 
   return (
     <div className="mt-12">
@@ -38,8 +54,8 @@ const BlogList = () => {
       {/* Blog Cards Section */}
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="wait">
-          {blog_data
-            .filter((blog) => (menu === 'All' ? true : blog.category === menu))
+          {filteredBlogs()
+            .filter((blog) => (menu === 'All' ? true : blog.category.toLowerCase() === menu.toLowerCase()))
             .map((blog) => (
               <motion.div
                   key={blog._id}
